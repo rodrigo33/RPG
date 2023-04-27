@@ -1,15 +1,9 @@
 package com.avanade.todo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Table(name = "BatalhaHistorico")
 @Entity
 public class BatalhaHistorico implements Serializable {
@@ -27,8 +21,8 @@ public class BatalhaHistorico implements Serializable {
     @Column(name = "PERSONAGEM_INICIANTE_DA_BATALHA", nullable = false)
     private String personagemInicianteDaBatalha;
 
-    @Column(name = "DADO_ATAQUE", nullable = true)
-    private int dadoAtaque;
+    @Column(name = "DADO_ATAQUE", nullable = false)
+    private Integer dadoAtaque;
 
     @Column(name = "DADO_DEFESA", nullable = false)
     private int dadoDefesa;
@@ -71,11 +65,11 @@ public class BatalhaHistorico implements Serializable {
         this.personagemInicianteDaBatalha = personagemInicianteDaBatalha;
     }
 
-    public int getDadoAtaque() {
+    public Integer getDadoAtaque() {
         return dadoAtaque;
     }
 
-    public void setDadoAtaque(int dadoAtaque) {
+    public void setDadoAtaque(Integer dadoAtaque) {
         this.dadoAtaque = dadoAtaque;
     }
 

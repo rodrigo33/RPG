@@ -26,7 +26,7 @@ public class BatalhaController {
         Personagem jogador1 = batalhaService.getPersonagemById(idHeroi);
         Personagem jogador2 = batalhaService.getPersonagemById(idMonstro);
         batalhaService.iniciar(jogador1, jogador2);
-        return ResponseEntity.ok("Batalha iniciada!");
+        return ResponseEntity.ok("Batalha finalizada!");
     }
 
     @GetMapping("/historicos")

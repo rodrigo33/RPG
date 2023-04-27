@@ -35,10 +35,8 @@ public class BatalhaService {
         int resultado2 = rolarDado(20) + jogador2.getAgilidade();
 
         if (resultado1 > resultado2) {
-            System.out.println(jogador1.getNome() + " inicia o jogo!");
             turno(jogador1, jogador2);
         } else if (resultado2 > resultado1) {
-            System.out.println(jogador2.getNome() + " inicia o jogo!");
             turno(jogador1, jogador2);
         } else {
             iniciar(jogador1, jogador2);
@@ -46,25 +44,24 @@ public class BatalhaService {
     }
 
     private void turno(Personagem atacante, Personagem defensor) {
-        numeroTurno++;
+        /*numeroTurno++;
         BatalhaHistorico batalhaHistorico = new BatalhaHistorico();
         batalhaHistorico.setPersonagemInicianteDaBatalha(atacante.getNome());
         batalhaHistorico.setTipo(atacante.getTipo());
         batalhaHistorico.setTipo(defensor.getTipo());
         batalhaHistorico.setNome(atacante.getNome());
         batalhaHistorico.setNome(defensor.getNome());
-        System.out.println(atacante.getNome() + " ataca " + defensor.getNome() + ".");
+        System.out.println(atacante.getNome() + " ataca " + defensor.getNome() + ".");*/
 
-        int resultadoAtaque = rolarDado(12) + atacante.getForca() + atacante.getAgilidade();
-        int resultadoDefesa = rolarDado(12) + defensor.getDefesa() + defensor.getAgilidade();
+        Integer resultadoAtaque = rolarDado(12) + atacante.getForca() + atacante.getAgilidade();
+        Integer resultadoDefesa = rolarDado(12) + defensor.getDefesa() + defensor.getAgilidade();
 
-        batalhaHistorico.setDadoAtaque(resultadoAtaque);
-        batalhaHistorico.setDadoDefesa(resultadoDefesa);
+        /*batalhaHistorico.setDadoAtaque(resultadoAtaque);
+        batalhaHistorico.setDadoDefesa(resultadoDefesa);*/
 
         if (resultadoAtaque > resultadoDefesa) {
             int dano = calcularDano(atacante);
-            batalhaHistorico.setDano(dano);
-            System.out.println("O ataque acerta! " + defensor.getNome() + " recebe " + dano + " pontos de dano.");
+            //batalhaHistorico.setDano(dano);
             int pontosDeVida = defensor.getVida() - dano;
             defensor.setVida(pontosDeVida);
             controller.update(defensor);
@@ -73,13 +70,12 @@ public class BatalhaService {
         }
 
         if (defensor.getVida() <= 0) {
-            System.out.println(defensor.getNome() + " foi derrotado! O jogo acabou.");
             controller.update(defensor);
             return;
         }
 
-        batalhaHistorico.setNumeroTurno(numeroTurno);
-        create(batalhaHistorico);
+        /*batalhaHistorico.setNumeroTurno(numeroTurno);
+        create(batalhaHistorico);*/
         turno(defensor, atacante);
     }
 
